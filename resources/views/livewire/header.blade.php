@@ -2,17 +2,42 @@
     <div class="row m-0 justify-content-between w-100 align-items-center">
         <ul class="d-flex menu_top align-items-center">
             <li class="logo_top animate__animated animate__flip">
-                <img src="{{asset('./assets/images/logo.png')}}" alt=""/>
+                <a href="{{route('index-home')}}">
+                    <img class="mt-3" src="{{asset('./assets/images/logo.png')}}" alt=""/>
+                </a>
             </li>
-
+            {{--           @can('is_admin')--}}
             <li class="mx-3 cursor_pointer_text_shadow font_1_1">
                 مقالات
                 <span></span>
             </li>
+            {{--            @endcan--}}
             <li class="mx-3 cursor_pointer_text_shadow font_1_1">
                 درباره ما
                 <span></span>
             </li>
+            @if (!auth()->check())
+                <li class="mx-3 cursor_pointer_text_shadow font_1_1">
+                    <a href="{{route('index-register')}}"> ثبت نام
+                        <span></span>
+                    </a>
+                </li>
+                <li class="mx-3 cursor_pointer_text_shadow font_1_1">
+                    <a href="{{route('index-login')}}">ورود
+                        <span></span>
+                    </a>
+                </li>
+            @else
+                <li class="mx-3 cursor_pointer_text_shadow font_1_1">
+                    {{auth()->user()->name}}
+                    <span></span>
+                </li>
+                <li class="mx-3 cursor_pointer_text_shadow font_1_1">
+                    <a href="{{route('index-logout')}}">خروج
+                        <span></span>
+                    </a>
+                </li>
+            @endif
             <li class="d-block d-md-none mx-4">
                 <a href="/" class="fas fa-search fa-2x cursor_pointer_text_shadow "></a>
             </li>
