@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Search;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
-class Header extends Component
+class Search extends Component
 {
 
-    public string $char = "";
+    public function mount($catId, $char = ""): void
+    {
+
+    }
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.header');
+        return view('livewire.search.search');
     }
 }

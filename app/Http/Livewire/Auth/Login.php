@@ -17,6 +17,9 @@ class Login extends Component
         'remember' => false,
     ];
 
+    /** @noinspection PhpMissingReturnTypeInspection
+     * @noinspection ReturnTypeCanBeDeclaredInspection
+     */
     public function login()
     {
         $this->validate([
@@ -27,12 +30,12 @@ class Login extends Component
             'email' => $this->data['email'],
             'password' => $this->data['password'],
         ], $this->data['remember'])) {
-           if (auth()->user()->is_admin == 1) {
-               return redirect()->to(route('index-article',15));
-           }else{
-               return redirect()->to(route('index-home'));
-           }
+            if (auth()->user()->is_admin === 1) {
+                return redirect()->to(route('index-article', 15));
+            }
+            return redirect()->to(route('index-home'));
         }
+        return redirect()->to(route('index-home'));
     }
 
     public function render(): Factory|View|Application

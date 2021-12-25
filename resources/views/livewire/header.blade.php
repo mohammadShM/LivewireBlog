@@ -8,7 +8,7 @@
             </li>
             {{--           @can('is_admin')--}}
             <li class="mx-3 cursor_pointer_text_shadow font_1_1">
-                مقالات
+                <a href="{{route('index-search',0)}}">مقالات</a>
                 <span></span>
             </li>
             {{--            @endcan--}}
@@ -48,8 +48,9 @@
                 type="text" id="search"
                 class="form-control rounded_5 placeholder_gray shadow-sm"
                 placeholder="دنبال چی می گردی؟"
+                wire:model="char"
             />
-            <a href="#" class="fas fa-search search_btn"></a>
+            <a href="{{route('index-search',['catId'=>0,'char'=>$char])}}" class="fas fa-search search_btn"></a>
         </div>
     </div>
 </header>
