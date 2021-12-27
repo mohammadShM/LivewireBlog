@@ -5,15 +5,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- IMPORTANT!!! remember CSRF token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('./assets/css/bootstrap/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('./assets/fontawesome/css/all.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('./assets/css/animate.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('./assets/css/main.css')}}"/>
     <link rel="stylesheet" href="{{asset('./assets/css/style.css')}}"/>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-    <livewire:styles/>
     <title>Laravel Blog</title>
+    <script src="{{asset('js/app.js')}}"></script>
+    {!! htmlScriptTagJsApi() !!}
+    <livewire:styles/>
 </head>
 <body dir="rtl">
 <livewire:header/>
